@@ -1,0 +1,35 @@
+{
+  "name": "sample-bobx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "typescript": {
+    "main": "src/app.ts"
+  },
+  "author": "keeema",
+  "license": "ISC",
+  "bobril": {
+    "title": "Zuby Plzeň",
+    "additionalResourcesDirectory": "assets-app", 
+    "head": "<meta name=\"format-detection\" content=\"telephone=yes\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">",    
+    "compilerOptions": {
+      "noImplicitAny": true,
+      "noImplicitThis": true,
+      "noUnusedLocals": false,
+      "noUnusedParameters": false,
+      "noImplicitReturns": true,
+      "noFallthroughCasesInSwitch": true,
+      "strictNullChecks": true,
+      "experimentalDecorators": true
+    },
+    "defaultLanguage": "cs"
+  },
+  "dependencies": {
+    "@types/googlemaps": "^3.29.0",
+    "bobril": "^7.4.0",
+    "bobflux": "*"
+  }
+}
