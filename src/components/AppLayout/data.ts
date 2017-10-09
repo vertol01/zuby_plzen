@@ -6,5 +6,8 @@ export interface IData {
     leftColumn: b.IBobrilNode,
     rightColumn: b.IBobrilNode,
     centerColumn: b.IBobrilNode,
-    width: number
+    appContentWidth: number
+    appWidth: number,
+    appBackgroundcolor: string,
+    pageBackgroundcolor: string
 }

@@ -5,8 +5,8 @@ export const textHeader = b.styleDef(
     {
         fontFamily: Fonts.OpenSansCondensedFontFamily,
         fontWeight: Fonts.FontWeightBold,
-        marginBottom: Constants.headerTextPadding,
-        fontSize: Constants.headerTextSize
+        marginBottom: Constants.textHeaderTextPadding,
+        fontSize: Constants.textHeaderTextSize
     }
 );
 

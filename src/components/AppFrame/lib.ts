@@ -18,7 +18,10 @@ export const create = b.createVirtualComponent<IData>({
         const state = flux.getState(pageCursor);
         let app = AppLayout.create(
             {
-                width: Constants.appWidth,
+                appWidth: Constants.appWidth,
+                appContentWidth: Constants.appContentWidth,
+                appBackgroundcolor: Constants.appBackgroundColor,
+                pageBackgroundcolor: Constants.pageBackgroundcolor,
                 appHeader: getAppHeader(),
                 appControls: getControls(state.currentPage),
                 leftColumn: getLeftColumn(),
@@ -41,17 +44,34 @@ function getAppHeader() {
     return b.style(
         {
             tag: 'div',
-            children: 'MDDr. Jana Bystřická'
+            children: [
+                b.style(
+                    {
+                        tag: 'span',
+                        children: '·'
+                    },
+                    { fontWeight: Fonts.FontWeightBold }
+                ),
+                'MDDr. Jana Bystřická',
+                b.style(
+                    {
+                        tag: 'span',
+                        children: '·'
+                    },
+                    { fontWeight: Fonts.FontWeightBold }
+                ),
+            ]
         },
         {
             height: Constants.headerHeight,
-            background: `url(${b.asset(assets.logo_svg)}) no-repeat top center/contain, 
+            background: `url(${b.asset(assets.logo_svg)}) no-repeat top left/contain, 
             url(${b.asset(assets.zuby_png)}) no-repeat center/contain`,
             marginBottom: Constants.headerMarginBottom,
             marginTop: Constants.headerMarginTop,
             flex: '1 1 100%',
             fontFamily: Fonts.OpenSansCondensedFontFamily,
             fontWeight: Fonts.FontWeightLight,
+            fontSize: Constants.headerTextSize,
             justifyContent: 'center',
             alignItems: 'flex-end',
             display: 'flex'
@@ -142,8 +162,73 @@ function getControls(currentPage: string) {
 }
 
 function getRightColumn() {
-    return b.style({ tag: 'div' }, { height: 300, width: Constants.rightColumnWidth, backgroundColor: 'orange', flex: '1 1 auto' });
+    let items = Rows.create({
+        rows: [
+            {
+                content:
+                b.styledDiv(
+                    b.styledDiv(
+                        "736 659 544",
+                        { paddingTop: 50 }
+                    ),
+                    {
+                        marginBottom: Constants.rightItemsMargin,
+                        width: Constants.rightItemsSize,
+                        height: Constants.rightItemsSize,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'top',
+                        backgroundImage: `url(${b.asset(assets.telefon_png)})`,
+                        backgroundSize: 'contain',
+                        backgroundRepeat: 'no-repeat',
+                        fontFamily: Fonts.OpenSansCondensedFontFamily,
+                        fontWeight: Fonts.FontWeightLight,
+                        fontSize: Constants.rightColumnTextSize
+                    }
+                )
+            },
+            {
+                content: b.style(
+                    {
+                        tag: 'img',
+                        attrs: {
+                            src: b.asset(assets.right_column_1_jpg),
+                            width: Constants.rightItemsSize,
+                            height: Constants.rightItemsSize
+                        }
+                    },
+                    { margin: Constants.rightItemsMargin, borderRadius: '50%' }
+                )
+            },
+            {
+                content: b.style(
+                    {
+                        tag: 'img',
+                        attrs: {
+                            src: b.asset(assets.right_column_2_jpg),
+                            width: Constants.rightItemsSize,
+                            height: Constants.rightItemsSize
+                        }
+                    },
+                    { margin: Constants.rightItemsMargin, borderRadius: '50%' }
+                )
+            },
+        ],
+        alignment: Rows.Align.Center
+    });
+    return b.style(
+        {
+            tag: 'div',
+            children: items
+        },
+        {
+            width: Constants.rightColumnWidth,
+            flex: '1 1 auto',
+            display: 'flex'
+        }
+    );
 }
+
 function getTextField(value: string, textSize: number, lineHeight: number, isBold: boolean) {
     return b.style(
         {
@@ -153,7 +238,7 @@ function getTextField(value: string, textSize: number, lineHeight: number, isBol
         { fontSize: textSize },
         { fontFamily: Fonts.OpenSansCondensedFontFamily },
         { fontWeight: isBold ? Fonts.FontWeightBold : Fonts.FontWeightLight },
-        {lineHeight : lineHeight}
+        { lineHeight: lineHeight }
     );
 }
 
@@ -169,11 +254,11 @@ function getLeftColumn() {
                         { backgroundImage: `url(${b.asset(assets.ordinace_svg)})` },
                         { marginLeft: -70 },
                         { paddingLeft: 70 },
-                        { backgroundSize: 'contain'},
-                        { backgroundRepeat: 'no-repeat'}
+                        { backgroundSize: 'contain' },
+                        { backgroundRepeat: 'no-repeat' }
                     )
                 },
-               
+
                 {
                     content: LField.create(
                         {

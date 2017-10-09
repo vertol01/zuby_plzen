@@ -26,7 +26,10 @@ export const create = b.createVirtualComponent<IData>({
             }
         )
         me.children = AppContainer.create({
-            width: ctx.data.width,
+            appContentWidth: ctx.data.appContentWidth,
+            appWidth: ctx.data.appWidth,
+            appBackgroundcolor: ctx.data.appBackgroundcolor,
+            pageBackgroundcolor: ctx.data.pageBackgroundcolor,
             content: b.styledDiv(content, styles.mainContainer)
         });
     }

@@ -1,5 +1,7 @@
 import * as b from 'bobril';
 import { IData } from "./data";
+import * as styles from "./styles";
+
 export { IData, IAlignment } from "./data";
 
 export const create = b.createVirtualComponent<IData>({
@@ -14,8 +16,7 @@ export const create = b.createVirtualComponent<IData>({
         b.style(
             me.children,
             { width: ctx.data.width },
-            { justifyContent: 'space-between' },
-            { display: 'flex' }
+            styles.lFieldStyle
         )
     },
 });

@@ -8,4 +8,7 @@ export const OpenSans_CondBold_woff2 = "../assets/OpenSans-CondBold.woff2";
 export const OpenSans_CondLight_woff = "../assets/OpenSans-CondLight.woff";
 export const OpenSans_CondLight_woff2 = "../assets/OpenSans-CondLight.woff2";
 export const ordinace_svg = "../assets/ordinace.svg";
+export const right_column_1_jpg = "../assets/right_column_1.jpg";
+export const right_column_2_jpg = "../assets/right_column_2.jpg";
+export const telefon_png = "../assets/telefon.png";
 export const zuby_png = "../assets/zuby.png";

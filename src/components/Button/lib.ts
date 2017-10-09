@@ -1,7 +1,7 @@
 import * as b from 'bobril';
 import { IData } from './data';
-import * as Fonts from '../Font/lib';
 import * as Color from '../../colors';
+import * as styles from './styles';
 
 export const create = b.createVirtualComponent<IData>({
     render(ctx: IContext, me: b.IBobrilNode) {
@@ -15,13 +15,12 @@ export const create = b.createVirtualComponent<IData>({
                 height: ctx.data.height,
                 width: ctx.data.width,
                 backgroundColor: ctx.data.color,
-                border: 'none',
-                fontFamily: Fonts.OpenSansCondensedFontFamily,
-                fontWeight: Fonts.FontWeightLight,
-                fontSize: ctx.data.textSize,
-                outline: 'none',
-                color: ctx.data.textColor || Color.black
-            });
+                color: ctx.data.textColor || Color.black,
+                fontSize: ctx.data.textSize
+            },
+            styles.buttonStyle,
+            styles.buttonTextStyle
+        );
     },
 
     onClick(_ctx: IContext, _event: b.IBobrilMouseEvent) {

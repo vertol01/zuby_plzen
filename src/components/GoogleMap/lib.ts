@@ -1,11 +1,14 @@
 /// <reference path="../../../node_modules/@types/googlemaps/index.d.ts"/>
 import * as b from 'bobril';
 import { IData } from './data';
+import * as styles from './styles'
 
 export { IData, IMarker, IPosition } from './data';
 
 
-let scriptLoaded = false; 
+let scriptLoaded = false;
+const mapElementKey = 'map';
+const scriptElementKey = 'script';
 
 export const create = b.createVirtualComponent<IData>({
 
@@ -19,19 +22,18 @@ export const create = b.createVirtualComponent<IData>({
             b.style(
                 {
                     tag: 'div',
-                    ref: [ctx, 'map']
+                    ref: [ctx, mapElementKey]
                 },
-                { height: 300,  flex: '1 1 auto' }
+                styles.mapStyle
             ),
-             !scriptLoaded && {
+            !scriptLoaded && {
                 tag: 'script',
                 attrs: {
                     src: 'https://maps.googleapis.com/maps/api/js?key=' + ctx.data.apiKey
                 },
-                ref: [ctx, 'script']
+                ref: [ctx, scriptElementKey]
             }
         ];
-        b.style(me.children, { height: 300 });
     },
 
     postInitDom(ctx: IContext) {
@@ -48,7 +50,7 @@ function setOnLoad(ctx: IContext) {
     if (scriptLoaded) {
         return;
     }
-    let script = <HTMLElement>b.getDomNode(ctx.refs!['script']!);
+    let script = <HTMLElement>b.getDomNode(ctx.refs![scriptElementKey]!);
     script.onload = () => {
         scriptLoaded = true;
         b.invalidate(ctx);
@@ -58,7 +60,7 @@ function setOnLoad(ctx: IContext) {
 function initMap(ctx: IContext) {
     let dataWatermark = JSON.stringify(ctx.data);
     if (scriptLoaded && dataWatermark !== ctx.oldDataWatermark) {
-        let map = new google.maps.Map(<HTMLElement>b.getDomNode(ctx.refs!['map']!), {
+        let map = new google.maps.Map(<HTMLElement>b.getDomNode(ctx.refs![mapElementKey]!), {
             zoom: ctx.data.zoom,
             center: ctx.data.center
         });
