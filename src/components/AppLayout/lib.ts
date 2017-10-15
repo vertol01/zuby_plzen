@@ -10,7 +10,7 @@ export const create = b.createVirtualComponent<IData>({
         let columns = Columns.create({
             columns: [
                 { content: ctx.data.leftColumn },
-                { grow: true, content: ctx.data.centerColumn },
+                { growRatio: 100, content: ctx.data.centerColumn },
                 { content: ctx.data.rightColumn }
             ]
         })

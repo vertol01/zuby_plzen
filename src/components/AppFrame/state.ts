@@ -6,7 +6,7 @@ export interface IPageState extends flux.IState {
 }
 
 export const pageCursor: flux.ICursor<IPageState> = {
-    key: ''
+    key: 'pageState'
 };
 
 export function createDefaultPageState(): IPageState {

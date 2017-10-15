@@ -4,7 +4,6 @@ export let mainContainer = b.styleDef(
     {
         display: 'flex',
         flexDirection: 'column',
-
         flex: '1 1 100%',
     }
 )
@@ -23,6 +22,11 @@ export let growingItem = b.styleDef(
     }
 )
 
+export let rightAlignedItems = b.styleDef(
+    {
+        alignItems: 'flex-end'
+    }
+)
 
 export let centerItems = b.styleDef(
     {

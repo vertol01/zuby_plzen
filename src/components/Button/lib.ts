@@ -2,6 +2,7 @@ import * as b from 'bobril';
 import { IData } from './data';
 import * as Color from '../../colors';
 import * as styles from './styles';
+import * as assets from '../../assets';
 
 export const create = b.createVirtualComponent<IData>({
     render(ctx: IContext, me: b.IBobrilNode) {
@@ -18,8 +19,9 @@ export const create = b.createVirtualComponent<IData>({
                 color: ctx.data.textColor || Color.black,
                 fontSize: ctx.data.textSize
             },
+            ctx.data.backgroundImage && ctx.data.backgroundImage,
             styles.buttonStyle,
-            styles.buttonTextStyle
+            styles.buttonTextStyle,
         );
     },
 

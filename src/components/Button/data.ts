@@ -1,9 +1,10 @@
 export interface IData {
-    color: string,
-    value: string,
-    width : number,
-    height: number,
+    color?: string,
+    value?: string,
+    width?: number | string,
+    height?: number,
     textColor?: string,
-    textSize: number,
+    backgroundImage?: string;
+    textSize?: number,
     onClick: () => void
 }

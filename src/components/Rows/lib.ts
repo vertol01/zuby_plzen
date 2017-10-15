@@ -9,18 +9,30 @@ export const create = b.createVirtualComponent<IData>({
         let rows = ctx.data.rows.map((row) => {
             return b.styledDiv(
                 row.content,
-                !!row.grow ? styles.growingItem : styles.item
+                !!row.grow ? styles.growingItem : styles.item,
+                row.width && {width: `${row.width}%`  }
             );
         });
 
         me.children = b.styledDiv(
             rows,
             styles.mainContainer,
-            ctx.data.alignment === Align.Center? styles.centerItems : styles.stretchItems
+            getAlignment(ctx.data.alignment)
         )
     }
 });
 
 interface IContext extends b.IBobrilCtx {
     data: IData
+}
+
+function getAlignment(alignment: Align) {
+    switch(alignment){
+        case Align.Center:
+        return  styles.centerItems;
+        case Align.Stretch:
+        return  styles.stretchItems;
+        case Align.Right:
+        return  styles.rightAlignedItems;
+    }
 }

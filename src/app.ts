@@ -6,9 +6,9 @@ import { contactPage } from './pages/contactPage';
 import { homePage } from './pages/homePage';
 import { galleryPage } from './pages/galleryPage';
 import { servicesPage } from './pages/servicesPage';
-import * as state from './components/AppFrame/state'; 
+import * as state from './appState'; 
 
-flux.bootstrap(state.createDefaultPageState());
+flux.bootstrap(state.createDefaultState());
 
 b.routes(
     b.route({ handler: mainPage }, [

@@ -8,26 +8,46 @@ import * as Color from '../../colors';
 import * as Fonts from '../Font/lib';
 import * as LField from '../LField/lib';
 import * as assets from '../../assets';
+import * as MobileLayout from '../MobileAppLayout/lib';
 import { IData } from './data';
 import { pageCursor, IPageState } from './state';
+import { IDimensionsState, dimensionsCursor } from '../ViewportDimensions/state';
+import * as DynamicHeader from '../DynamicHeader/lib';
+import { showMobileAppControls } from '../MobileAppLayout/action/showControlsAction'
+
+
 import * as flux from 'bobflux';
 
 export const create = b.createVirtualComponent<IData>({
     render(_ctx: IContext, me: b.IBobrilNode): void {
 
-        const state = flux.getState(pageCursor);
-        let app = AppLayout.create(
-            {
-                appWidth: Constants.appWidth,
-                appContentWidth: Constants.appContentWidth,
-                appBackgroundcolor: Constants.appBackgroundColor,
-                pageBackgroundcolor: Constants.pageBackgroundcolor,
-                appHeader: getAppHeader(),
-                appControls: getControls(state.currentPage),
-                leftColumn: getLeftColumn(),
-                rightColumn: getRightColumn(),
-                centerColumn: _ctx.data.content
+        const pageState = flux.getState(pageCursor);
+        const state = flux.getState(dimensionsCursor);
+        if (state.viewportWidth === undefined) {
+            return;
+        }
+        let app;
+        if (state.viewportWidth > Constants.mobileLayoutWidth) {
+            app = AppLayout.create(
+                {
+                    appWidth: Constants.appWidth,
+                    appContentWidth: Constants.appContentWidth,
+                    appBackgroundcolor: Constants.appBackgroundColor,
+                    pageBackgroundcolor: Constants.pageBackgroundcolor,
+                    appHeader: getAppHeader(Constants.headerMarginBottom),
+                    appControls: getControls(pageState.currentPage),
+                    leftColumn: getLeftColumn(),
+                    rightColumn: getRightColumn(),
+                    centerColumn: _ctx.data.content
+                });
+        } else {
+            app = MobileLayout.create({
+                header: getAppHeader(Constants.mobileHeaderMarginBottom),
+                info: getAppInfo(state.viewportWidth),
+                content: _ctx.data.content,
+                controls: getMobileAppControls()
             });
+        }
 
         me.children = [
             Fonts.create(),
@@ -40,11 +60,102 @@ interface IContext extends b.IBobrilCtx {
     data: IData;
 }
 
-function getAppHeader() {
-    return b.style(
+function getTextSize(viewportWidth: number) {
+    return (820 + viewportWidth) / 76;
+}
+
+function getAppInfo(viewportWidth: number) {
+    return Rows.create(
         {
-            tag: 'div',
-            children: [
+            alignment: Rows.Align.Center,
+            rows: [
+                {
+                    content: b.styledDiv(
+                        {},
+                        { width: Constants.leftColumnWidth },
+                        { height: 20 },
+                        { backgroundImage: `url(${b.asset(assets.ordinace_svg)})` },
+                        { backgroundSize: 'contain' },
+                        { backgroundRepeat: 'no-repeat' }
+                    )
+                },
+                {
+                    width: 100,
+                    content: getOpeningTimes(viewportWidth)
+                },
+                {
+                    content: b.styledDiv(
+                        b.styledDiv(
+                            "736 659 544",
+                            { paddingTop: Math.min(viewportWidth / 400 * 45, 45) },
+                            {
+                                whiteSpace: 'nowrap'
+                            }
+                        ),
+                        {
+                            marginTop: 10,
+                            marginBottom: 10,
+                            width: Math.min(viewportWidth / 400 * Constants.rightItemsSize, Constants.rightItemsSize),
+                            height: Math.min(viewportWidth / 400 * 78, 78),
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'top',
+                            backgroundImage: `url(${b.asset(assets.telefon1_png)})`,
+                            backgroundSize: 'contain',
+                            backgroundRepeat: 'no-repeat',
+                            fontFamily: Fonts.OpenSansCondensedFontFamily,
+                            fontWeight: Fonts.FontWeightLight,
+                            fontSize: Math.max(Math.min(viewportWidth / 400 * Constants.rightColumnTextSize, Constants.rightColumnTextSize), 15)
+                        }
+                    )
+                }
+            ]
+        }
+    )
+}
+
+function getOpeningTimes(viewportWidth: number) {
+
+    let textSize = getTextSize(viewportWidth);
+    textSize = Math.max(Math.min(viewportWidth / 400 * 20, 20), 15);
+    let data = Columns.create({
+        addSpacing: true,
+        columns: [
+            {
+                content: getTextField('PO|8-12', textSize, Constants.lineHeight, false),
+            },
+            {
+                content: getTextField('ÚT|8-12', textSize, Constants.lineHeight, false),
+            },
+            {
+                content: getTextField('ST|12-15', textSize, Constants.lineHeight, false),
+            },
+            {
+                content: getTextField('ČT|8-12', textSize, Constants.lineHeight, false),
+            },
+            {
+                content: getTextField('PÁ|8-12', textSize, Constants.lineHeight, false),
+            },
+        ]
+    });
+    return b.style(data, { flexWrap: 'wrap'});
+}
+
+function getAppHeader(headerMargimBottom: number) {
+    let background = b.style(
+        {
+            tag: 'div'
+        },
+        {
+            flex: '1 1 100%',
+            marginLeft: '22%',
+            marginRight: '22%',
+            background: `url(${b.asset(assets.zuby_png)}) no-repeat 22% 0/contain`,
+        }
+    )
+    let headerText =
+        b.styledDiv(
+            [
                 b.style(
                     {
                         tag: 'span',
@@ -60,23 +171,136 @@ function getAppHeader() {
                     },
                     { fontWeight: Fonts.FontWeightBold }
                 ),
-            ]
-        },
+            ],
+            {
+                display: 'flex',
+                flex: '1 1 100%',
+                justifyContent: 'center',
+                alignItems: 'flex-end',
+                fontFamily: Fonts.OpenSansCondensedFontFamily,
+                fontWeight: Fonts.FontWeightLight,
+                background: `url(${b.asset(assets.logo_svg)}) no-repeat top left/contain,
+                             url(${b.asset(assets.zuby_png)}) no-repeat center/contain`
+            }
+        );
+
+    let dynamicHeader = DynamicHeader.create({
+        heightToWidthRatio: Constants.headerRatio,
+        content: [headerText]
+    });
+
+    let headerWrapper = b.styledDiv(
+        dynamicHeader,
         {
-            height: Constants.headerHeight,
-            background: `url(${b.asset(assets.logo_svg)}) no-repeat top left/contain, 
-            url(${b.asset(assets.zuby_png)}) no-repeat center/contain`,
-            marginBottom: Constants.headerMarginBottom,
-            marginTop: Constants.headerMarginTop,
             flex: '1 1 100%',
-            fontFamily: Fonts.OpenSansCondensedFontFamily,
-            fontWeight: Fonts.FontWeightLight,
-            fontSize: Constants.headerTextSize,
-            justifyContent: 'center',
-            alignItems: 'flex-end',
+            marginBottom: headerMargimBottom,
+            marginTop: Constants.headerMarginTop,
             display: 'flex'
         }
     );
+
+    return headerWrapper;
+}
+
+function getMobileAppControls() {
+    return Rows.create({
+        alignment: Rows.Align.Stretch,
+        rows: [
+            {
+                content: b.styledDiv(
+                    Button.create(
+                        {
+                            height: Constants.buttonHeight,
+                            color: Color.darkBlue,
+                            value: 'Domů',
+                            width: '100%',
+                            textSize: Constants.buttonTextSize,
+                            onClick: () => {
+                                b.runTransition(b.createRedirectPush('home'));
+                                showMobileAppControls(false);
+                            }
+                        }
+                    ),
+                    { marginTop: Constants.mobileControlsMargin, flex: '1 1 100%', display: 'flex' }
+                )
+            },
+            {
+                content: b.styledDiv(
+                    Button.create(
+                        {
+                            height: Constants.buttonHeight,
+                            color: Color.lightBrown,
+                            width: '100%',
+                            textSize: Constants.buttonTextSize,
+                            value: 'O nás',
+                            onClick: () => {
+                                b.runTransition(b.createRedirectPush('about'));
+                                showMobileAppControls(false);
+                            }
+                        }),
+                    {
+                        marginTop: Constants.mobileControlsMargin, flex: '1 1 100%', display: 'flex'
+                    }
+                )
+            },
+            {
+                content: b.styledDiv(
+                    Button.create(
+                        {
+                            height: Constants.buttonHeight,
+                            color: Color.darkBrow,
+                            width: '100%',
+                            textSize: Constants.buttonTextSize,
+                            value: 'Služby',
+                            onClick: () => {
+                                b.runTransition(b.createRedirectPush('services'));
+                                showMobileAppControls(false);
+                            }
+                        }),
+                    {
+                        marginTop: Constants.mobileControlsMargin, flex: '1 1 100%', display: 'flex'
+                    }
+                )
+            },
+            {
+                content: b.styledDiv(
+                    Button.create(
+                        {
+                            height: Constants.buttonHeight,
+                            width: '100%',
+                            color: Color.lightBlue,
+                            textSize: Constants.buttonTextSize,
+                            value: 'Fotogalerie',
+                            onClick: () => {
+                                b.runTransition(b.createRedirectPush('gallery'));
+                                showMobileAppControls(false);
+                            }
+                        }),
+                    {
+                        marginTop: Constants.mobileControlsMargin, flex: '1 1 100%', display: 'flex'
+                    }
+                )
+            },
+            {
+                content: b.styledDiv(
+                    Button.create(
+                        {
+                            height: Constants.buttonHeight,
+                            color: Color.black,
+                            textSize: Constants.buttonTextSize,
+                            width: '100%',
+                            textColor: Color.white,
+                            value: 'Kontakt',
+                            onClick: () => {
+                                b.runTransition(b.createRedirectPush('contact'));
+                                showMobileAppControls(false);
+                            }
+                        }),
+                    { marginTop: Constants.mobileControlsMargin, flex: '1 1 100%', display: 'flex' }
+                )
+            }
+        ]
+    })
 }
 
 function getControls(currentPage: string) {
@@ -214,7 +438,7 @@ function getRightColumn() {
                 )
             },
         ],
-        alignment: Rows.Align.Center
+        alignment: Rows.Align.Right
     });
     return b.style(
         {
@@ -238,7 +462,8 @@ function getTextField(value: string, textSize: number, lineHeight: number, isBol
         { fontSize: textSize },
         { fontFamily: Fonts.OpenSansCondensedFontFamily },
         { fontWeight: isBold ? Fonts.FontWeightBold : Fonts.FontWeightLight },
-        { lineHeight: lineHeight }
+        { lineHeight: lineHeight },
+        { whiteSpace: 'nowrap' }
     );
 }
 
