@@ -15,8 +15,8 @@ b.routes(
         b.route({ url: '/home', name: 'home', handler: homePage }),
         b.route({ url: '/about', name: 'about', handler: aboutPage }),
         b.route({ url: '/contact', name: 'contact', handler: contactPage }),
-        b.route({ url: '/services', name: 'services', handler: galleryPage }),
-        b.route({ url: '/gallery', name: 'gallery', handler: servicesPage }),
+        b.route({ url: '/services', name: 'services', handler: servicesPage }),
+        b.route({ url: '/gallery', name: 'gallery', handler: galleryPage }),
         b.routeDefault({ handler: homePage })
     ])
 );

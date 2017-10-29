@@ -6,12 +6,14 @@ export { IData } from './data';
 
 export const create = b.createVirtualComponent<IData>({
     render(ctx: IContext, me: b.IBobrilNode) {
+
+        let rows = [];
+
+        ctx.data.header && rows.push({ content: getHeader(ctx.data.header) });
+        ctx.data.text && rows.push({ content: getBody(ctx.data.text) });
         me.children = Rows.create(
             {
-                rows: [
-                    { content: getHeader(ctx.data.header) },
-                    { content: getBody(ctx.data.text) }
-                ],
+                rows: rows,
                 alignment: Rows.Align.Stretch
             }
         );
@@ -38,10 +40,10 @@ function getBody(texts: string[]) {
         {
             tag: 'div',
             children: texts.map((item) => {
-                return [
-                    item,
-                    { tag: 'br' }
-                ];
+                return {
+                    tag: 'p',
+                    children: item
+                };
             })
         },
         styles.textBody

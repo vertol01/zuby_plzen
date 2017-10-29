@@ -2,6 +2,7 @@
 import * as b from 'bobril';
 import * as Rows from '.././components/Rows/lib';
 import * as TextArea from '.././components/TextArea/lib';
+import * as TextList from '.././components/TextList/lib';
 import * as Constants from '.././constants';
 
 export const homePage = b.createVirtualComponent({
@@ -10,85 +11,65 @@ export const homePage = b.createVirtualComponent({
         console.log('init');
     },
     render(_ctx: b.IBobrilCtx, me: b.IBobrilNode): void {
-
-
         me.children = getText();
     }
 })
 
 function getText() {
-    let headertext = "Nová zubní ordinace";
     var text = [
-        `Eria quiae perspid eos maximinum iliqui temquam etur sunt.`,
-        `Et, sundae volum faci quam, conem earchicae laboreperume nectur, siminct orehenet
-        utemque et facillabo. Tio magnimo ssumqui non et lacia con consediatqui ape corro
-        berro est aut occatios quae suntur, con rehendi toreperi comnis essit mintio. Saerro
-        qui deratur eperum sandebis evenihi cabore, officaectiis qui nobit ex expelici is imin
-        comnimetur, que explitissum in el et, odiscit atusdam, te ma cone cum et, sum atur,
-        il iderovit as ab in comnima ximust, sum reiusda pero maio. Neque dunt ex excestion
-        coriant magnim conecta aut es sum que molo di dis quia volupit ipsandae eate velique
-        nectiature ped quo magnatur rerunt officiae. Hicae pro voloreratur ra vel invellecus
-        nonsed quo evenis qui dolori inveliciant.`];
+        `Nové moderní prostředí ordinace nabízí svým pacientům kvalitní a profesionální služby v oblasti
+        zubního lékařství a zubní hygieny. Aplikujeme nejnovější léčebné metody a postupy, pracujeme se
+        špičkovým vybavením a klademe důraz na šetrné a bezbolestné ošetření.`,
+        `Naše práce stojí na třech základních pilířích – pravidelná preventivní péče – profesionální ošetření za
+        pomoci moderní techniky a postupů – přátelský a individuální přístup, který ocení dospělí i ti
+        nejmenší.`,
+        `Přijďte se přesvědčit, že i péče o zuby může být příjemná!`,
+        `Těšíme se na Vaši návštěvu`,
+        `Tým ZuBy s.r.o.`,
+
+        `MODERNÍ A PŘÍJEMNÉ PROSTŘEDÍ`,
+        `ŠPIČKOVÉ PŘÍSTROJE – MODERNÍ LÉČEBNÉ A DIAGNOSTICKÉ METODY`,
+        `ŠETRNÉ A BEZBOLESTNÉ OŠETŘENÍ`,
+        `OSOBNÍ A LIDSKÝ PŘÍSTUP`,
+        `PÉČE I O TY NEJMENŠÍ`,
+        `SMLUVNÍ ZAŘÍZENÍ ZDRAVOTNÍCH POJIŠŤOVEN`,
+        `V ordinaci pracujeme s tímto moderním vybavením:`
+
+    ];
+
+    function getList() {
+        return [
+            `Intraorální rentgen (zhotovení detailních snímků jednotlivých zubů a diagnostických skusových snímků)`,
+            `Panoramatický rentgen (snímkování kompletního chrupu)`,
+            `Ultrazvuk (odstraňování zubního kamene)`,
+            `Endomotor (přístrojové ošetření zubních kanálků)`,
+            `Apexlokátor (přesné měření délky zubního kanálku)`,
+            `Polymerační lampa (vytvrzení “bílých” plomb)`,
+            `AirFlow ( odstraňování diskolorací zubů )`,
+            `Přístroje na sterilizaci a dezinfekci pracovních nástrojů a vybavení`
+        ];
+    }
 
     return Rows.create(
         {
             alignment: Rows.Align.Stretch,
             rows: [
                 {
-                    content: b.styledDiv(
-                        TextArea.create(
-                            {
-                                header: headertext,
-                                text: text
-                            }
-                        ),
-                        { flex: '1 1 100%'}
+                    content:
+                    TextArea.create(
+                        {
+                            header: undefined,
+                            text: text
+                        }
                     ),
-                    
                 },
                 {
-                    content: b.styledDiv(
-                        TextArea.create(
-                            {
-                                header: headertext,
-                                text: text
-                            }
-                        ),
-                        { marginTop: Constants.textBlockMargin , flex: '1 1 100%'}
-                    )
-                },
-                {
-                    content: b.styledDiv(
-                        TextArea.create(
-                            {
-                                header: headertext,
-                                text: text
-                            }
-                        ),
-                        { marginTop: Constants.textBlockMargin  , flex: '1 1 100%'}
-                    )
-                },
-                {
-                    content: b.styledDiv(
-                        TextArea.create(
-                            {
-                                header: headertext,
-                                text: text
-                            }
-                        ),
-                        { marginTop: Constants.textBlockMargin  , flex: '1 1 100%'}
-                    )
-                },
-                {
-                    content: b.styledDiv(
-                        TextArea.create(
-                            {
-                                header: headertext,
-                                text: text
-                            }
-                        ),
-                        { marginTop: Constants.textBlockMargin  , flex: '1 1 100%'}
-                    )
+                    content:
+                    TextList.create(
+                        {
+                            items: getList()
+                        }
+                    ),
                 }
             ]
         }

@@ -1,16 +1,12 @@
 {
-  "name": "sample-bobx",
+  "name": "zuby",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/app.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "typescript": {
-    "main": "src/app.ts"
-  },
-  "author": "keeema",
-  "license": "ISC",
+  "author": "bystricky",
   "bobril": {
     "title": "Zuby Plzeň",
     "additionalResourcesDirectory": "assets-app", 
