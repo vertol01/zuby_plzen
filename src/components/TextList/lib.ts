@@ -7,30 +7,45 @@ import { IData } from './data';
 export { IData } from './data';
 
 export const create = b.createVirtualComponent<IData>({
-    render(ctx: IContext, me: b.IBobrilNode) {
+  render(ctx: IContext, me: b.IBobrilNode) {
+    let rows = [];
 
-        me.children = getList(ctx.data.items);
-    },
+    ctx.data.header && rows.push({ content: getHeader(ctx.data.header) });
+    rows.push({ content: getList(ctx.data.items) });
+    me.children = Rows.create({
+      rows: rows,
+      alignment: Rows.Align.Stretch
+    });
+  }
 });
 
 interface IContext extends b.IBobrilCtx {
     data: IData;
 }
 
+function getHeader(text: string) {
+    return b.style(
+      {
+        tag: "div",
+        children: text
+      },
+      styles.textHeader
+    );
+  }
 
 function getList(texts: string[]) {
 
     return [
-        {
-            tag: 'style',
-            children:
-                `li:before {
-                    content: "-";
-                    margin-left: -1em;
-                    width: 1em;
-                    display: inline-block;
-                }`
-        },
+        // {
+        //     tag: 'style',
+        //     children:
+        //         `li:before {
+        //             content: "-";
+        //             margin-left: -1em;
+        //             width: 1em;
+        //             display: inline-block;
+        //         }`
+        // },
         b.style(
             {
                 tag: 'ul',

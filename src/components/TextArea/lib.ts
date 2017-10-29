@@ -1,51 +1,55 @@
-import * as b from 'bobril';
-import * as Rows from '../Rows/lib';
-import *  as styles from './styles';
-import { IData } from './data';
-export { IData } from './data';
+import * as b from "bobril";
+import * as Rows from "../Rows/lib";
+import * as styles from "./styles";
+import { IData, IParagraph } from "./data";
+export { IData } from "./data";
 
 export const create = b.createVirtualComponent<IData>({
-    render(ctx: IContext, me: b.IBobrilNode) {
+  render(ctx: IContext, me: b.IBobrilNode) {
+    let rows = [];
 
-        let rows = [];
-
-        ctx.data.header && rows.push({ content: getHeader(ctx.data.header) });
-        ctx.data.text && rows.push({ content: getBody(ctx.data.text) });
-        me.children = Rows.create(
-            {
-                rows: rows,
-                alignment: Rows.Align.Stretch
-            }
-        );
-    },
+    ctx.data.header && rows.push({ content: getHeader(ctx.data.header) });
+    ctx.data.paragraphs && rows.push({ content: getBody(ctx.data.paragraphs) });
+    me.children = Rows.create({
+      rows: rows,
+      alignment: Rows.Align.Stretch
+    });
+  }
 });
 
 interface IContext extends b.IBobrilCtx {
-    data: IData;
+  data: IData;
 }
 
 function getHeader(text: string) {
-    return b.style(
-        {
-            tag: 'div',
-            children: text
-        },
-        styles.textHeader,
-
-    );
+  return b.style(
+    {
+      tag: "div",
+      children: text
+    },
+    styles.textHeader
+  );
 }
 
-function getBody(texts: string[]) {
-    return b.style(
-        {
-            tag: 'div',
-            children: texts.map((item) => {
-                return {
-                    tag: 'p',
-                    children: item
-                };
+function getBody(paragraphs: IParagraph[]) {
+  return b.style(
+    {
+      tag: "div",
+      children: paragraphs.map(item => {
+        return b.style(
+          {
+            tag: "p",
+            children: item.lines.map((line, index) => {
+              //   if (index !== item.lines.length) {
+
+              //   }
+              return [line, { tag: "br" }];
             })
-        },
-        styles.textBody
-    );
+          },
+          item.topMargin !== undefined && { marginTop: item.topMargin }
+        );
+      })
+    },
+    styles.textBody
+  );
 }

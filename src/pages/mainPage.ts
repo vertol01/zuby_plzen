@@ -11,6 +11,6 @@ export const mainPage = b.createVirtualComponent({
         me.children = [
             ViewportDimensions.create(),
             AppFrame.create({ content: me.data.activeRouteHandler() })
-        ]
+        ];
     }
 });

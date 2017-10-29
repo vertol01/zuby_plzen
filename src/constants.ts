@@ -37,7 +37,6 @@ export const textSize = 16;
 export const textHeaderTextSize = 20;
 export const textHeaderTextPadding = 20;
 
-
 // mobile layout
 //export const maxMobileInfoBlockTextSize = 20;
 //export const minMobileInfoBlockTextSize = 20;
@@ -45,3 +44,7 @@ export const textHeaderTextPadding = 20;
 export const mobileHeaderMarginBottom = 5;
 export const mobileControlsMargin = 7;
 
+export const mobilePhoneNumber = '733 269 177';
+export const phoneNumber = '373 723 223';
+
+//export const mondayOpeningHours

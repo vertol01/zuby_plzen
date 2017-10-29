@@ -2,6 +2,14 @@ import * as b from 'bobril';
 import * as Fonts from '../Font/lib';
 import * as Constants from '../../constants';
 
+export const textHeader = b.styleDef(
+    {
+        fontFamily: Fonts.OpenSansCondensedFontFamily,
+        fontWeight: Fonts.FontWeightBold,
+        marginBottom: Constants.textHeaderTextPadding,
+        fontSize: Constants.textHeaderTextSize
+    }
+);
 
 export const list = b.styleDef(
     {
@@ -9,6 +17,5 @@ export const list = b.styleDef(
         fontWeight: Fonts.FontWeightLight,
         fontSize: Constants.textSize,
         marginTop: 0,
-        listStyleType: 'none'
     }
 );

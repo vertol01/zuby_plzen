@@ -86,7 +86,7 @@ function getAppInfo(viewportWidth: number) {
                 {
                     content: b.styledDiv(
                         b.styledDiv(
-                            "736 659 544",
+                            Constants.mobilePhoneNumber,
                             { paddingTop: Math.min(viewportWidth / 400 * 45, 45) },
                             {
                                 whiteSpace: 'nowrap'
@@ -392,7 +392,7 @@ function getRightColumn() {
                 content:
                 b.styledDiv(
                     b.styledDiv(
-                        "736 659 544",
+                        Constants.mobilePhoneNumber,
                         { paddingTop: 50 }
                     ),
                     {
