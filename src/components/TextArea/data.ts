@@ -10,7 +10,6 @@ export interface ILine {
 
 export interface IParagraph {
   lines: ILine[];
-  topMargin?: number;
 }
 
 export interface IData {

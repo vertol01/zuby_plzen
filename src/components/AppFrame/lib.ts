@@ -14,6 +14,7 @@ import { pageCursor, IPageState } from './state';
 import { IDimensionsState, dimensionsCursor } from '../ViewportDimensions/state';
 import * as DynamicHeader from '../DynamicHeader/lib';
 import { showMobileAppControls } from '../MobileAppLayout/action/showControlsAction'
+import * as OpeningHours from '../OpeningHours/lib';
 
 
 import * as flux from 'bobflux';
@@ -119,7 +120,7 @@ function getOpeningTimes(viewportWidth: number) {
     let textSize = getTextSize(viewportWidth);
     textSize = Math.max(Math.min(viewportWidth / 400 * 20, 20), 15);
     let data = Columns.create({
-        addSpacing: true,
+        spacing: Columns.Spacing.Between,
         columns: [
             {
                 content: getTextField('PO|8-12', textSize, Constants.lineHeight, false),
@@ -374,7 +375,7 @@ function getControls(currentPage: string) {
                         })
                 }
             ],
-            addSpacing: true
+            spacing: Columns.Spacing.Between,
         }
     );
     return b.styledDiv(controls, {
@@ -483,57 +484,10 @@ function getLeftColumn() {
                         { backgroundRepeat: 'no-repeat' }
                     )
                 },
-
                 {
-                    content: LField.create(
-                        {
-                            leftValue: getTextField('PO', Constants.leftColumnTextSize, Constants.lineHeight, true),
-                            rightValue: getTextField('8-12', Constants.leftColumnTextSize, Constants.lineHeight, false),
-                            width: Constants.lFieldWidth,
-                            align: LField.IAlignment.SpaceBetween
-                        }
-                    )
-                },
-                {
-                    content: LField.create(
-                        {
-                            leftValue: getTextField('ÚT', Constants.leftColumnTextSize, Constants.lineHeight, true),
-                            rightValue: getTextField('8-12', Constants.leftColumnTextSize, Constants.lineHeight, false),
-                            width: Constants.lFieldWidth,
-                            align: LField.IAlignment.SpaceBetween
-                        }
-                    )
-                },
-                {
-                    content: LField.create(
-                        {
-                            leftValue: getTextField('ST', Constants.leftColumnTextSize, Constants.lineHeight, true),
-                            rightValue: getTextField('8-15', Constants.leftColumnTextSize, Constants.lineHeight, false),
-                            width: Constants.lFieldWidth,
-                            align: LField.IAlignment.SpaceBetween
-                        }
-                    )
-                },
-                {
-                    content: LField.create(
-                        {
-                            leftValue: getTextField('ČT', Constants.leftColumnTextSize, Constants.lineHeight, true),
-                            rightValue: getTextField('12-16', Constants.leftColumnTextSize, Constants.lineHeight, false),
-                            width: Constants.lFieldWidth,
-                            align: LField.IAlignment.SpaceBetween
-                        }
-                    )
-                },
-                {
-                    content: LField.create(
-                        {
-                            leftValue: getTextField('PÁ', Constants.leftColumnTextSize, Constants.lineHeight, true),
-                            rightValue: getTextField('8-12', Constants.leftColumnTextSize, Constants.lineHeight, false),
-                            width: Constants.lFieldWidth,
-                            align: LField.IAlignment.SpaceBetween
-                        }
-                    )
+                    content: OpeningHours.create()
                 }
+                
             ],
             alignment: Rows.Align.Stretch
         }

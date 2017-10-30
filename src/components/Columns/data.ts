@@ -4,6 +4,12 @@ export enum Alignment {
     Stretch
 }
 
+export enum Spacing {
+    Between,
+    Around
+}
+
+
 export interface IColumn {
     growRatio?: number,
     content: b.IBobrilChildren
@@ -14,5 +20,5 @@ export interface IColumn {
 export interface IData {
     columns: IColumn[],
     alignment?: Alignment,
-    addSpacing?: boolean
+    spacing?: Spacing
 }

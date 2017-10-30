@@ -32,8 +32,14 @@ export let stretchItems = b.styleDef(
     }
 )
 
-export let containerSpacing = b.styleDef(
+export let containerSpacingBetween = b.styleDef(
     {
         justifyContent: 'space-between' 
+    }
+)
+
+export let containerSpacingAround = b.styleDef(
+    {
+        justifyContent: 'space-around' 
     }
 )

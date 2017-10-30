@@ -1,8 +1,8 @@
 import * as b from 'bobril';
 import * as styles from './styles';
-import { IData, Alignment } from "./data";
+import { IData, Alignment, Spacing } from "./data";
 
-export { IData, Alignment } from "./data";
+export { IData, Alignment, Spacing } from "./data";
 
 export const create = b.createVirtualComponent<IData>({
     render(ctx: IContext, me: b.IBobrilNode): void {
@@ -21,7 +21,8 @@ export const create = b.createVirtualComponent<IData>({
         me.children = b.styledDiv(
             columns,
             styles.mainContainer,
-            ctx.data.addSpacing && styles.containerSpacing,
+            ctx.data.spacing=== Spacing.Between && styles.containerSpacingBetween,
+            ctx.data.spacing=== Spacing.Around && styles.containerSpacingAround,
             ctx.data.alignment === Alignment.Stretch && styles.stretchItems
         )
     }

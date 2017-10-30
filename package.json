@@ -10,7 +10,7 @@
   "bobril": {
     "title": "Zuby Plzeň",
     "additionalResourcesDirectory": "assets-app", 
-    "head": "<meta name=\"format-detection\" content=\"telephone=yes\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">",    
+    "head": "<meta name=\"format-detection\" content=\"telephone=yes\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"> <meta name=\"description\" content=\"MDDr. Jana Bystřická | zubní ordinace Plzeň - Bory | profesionální péče - přátelské prostředí - bezbolestné ošetření\">.",    
     "compilerOptions": {
       "noImplicitAny": true,
       "noImplicitThis": true,

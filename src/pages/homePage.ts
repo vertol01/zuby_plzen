@@ -1,9 +1,8 @@
 import * as b from "bobril";
 import * as Rows from ".././components/Rows/lib";
 import * as TextArea from ".././components/TextArea/lib";
-import * as TextList from ".././components/TextList/lib";
 import * as Constants from ".././constants";
-import { IParagraph } from "../components/TextArea/data";
+import { IParagraph, LineType } from "../components/TextArea/data";
 
 export const homePage = b.createVirtualComponent({
   id: "homePage",
@@ -15,44 +14,117 @@ export const homePage = b.createVirtualComponent({
 function getText() {
   let text: IParagraph[] = [
     {
-      topMargin: 0,
       lines: [
-        `Nové moderní prostředí ordinace nabízí svým pacientům kvalitní a profesionální služby v oblasti
-        zubního lékařství a zubní hygieny. Aplikujeme nejnovější léčebné metody a postupy, pracujeme se
-        špičkovým vybavením a klademe důraz na šetrné a bezbolestné ošetření.`
+        {
+          type: LineType.Regular,
+          text: `Nové moderní prostředí ordinace nabízí svým pacientům kvalitní a profesionální služby v oblasti zubního lékařství a zubní hygieny. Aplikujeme nejnovější léčebné metody a postupy, pracujeme se špičkovým vybavením a klademe důraz na šetrné a bezbolestné ošetření.`
+        }
       ]
     },
     {
       lines: [
-        `Naše práce stojí na třech základních pilířích – pravidelná preventivní péče – profesionální ošetření za
-        pomoci moderní techniky a postupů – přátelský a individuální přístup, který ocení dospělí i ti
-        nejmenší.`
+        {
+          type: LineType.Regular,
+          text: `Naše práce stojí na třech základních pilířích – <b>pravidelná preventivní péče</b> – <b>profesionální ošetření</b> za pomoci moderní techniky a postupů – <b>přátelský a individuální přístup</b>, který ocení dospělí i ti nejmenší.`
+        }
       ]
     },
-    { lines: [`Přijďte se přesvědčit, že i péče o zuby může být příjemná!`] },
-    { lines: [`Těšíme se na Vaši návštěvu`] },
-    { lines: [`Tým ZuBy s.r.o.`] },
-    { lines: [`MODERNÍ A PŘÍJEMNÉ PROSTŘEDÍ`] },
-    { lines: [`ŠPIČKOVÉ PŘÍSTROJE – MODERNÍ LÉČEBNÉ A DIAGNOSTICKÉ METODY`] },
-    { lines: [`ŠETRNÉ A BEZBOLESTNÉ OŠETŘENÍ`] },
-    { lines: [`OSOBNÍ A LIDSKÝ PŘÍSTUP`] },
-    { lines: [`PÉČE I O TY NEJMENŠÍ`] },
-    { lines: [`SMLUVNÍ ZAŘÍZENÍ ZDRAVOTNÍCH POJIŠŤOVEN`] },
-    { lines: [`V ordinaci pracujeme s tímto moderním vybavením:`] }
+    {
+      lines: [{
+        type: LineType.Regular,
+        text: `Přijďte se přesvědčit, že i péče o zuby může být příjemná!`
+      }]
+    },
+    {
+      lines: [{
+        type: LineType.Regular,
+        text: `<b>Těšíme se na Vaši návštěvu</b>`
+      }]
+    },
+    {
+      lines: [{
+        type: LineType.Regular,
+        text: `Tým ZuBy s.r.o.`
+      }]
+    },
+    {
+      lines: [{
+        type: LineType.Regular,
+        text: `MODERNÍ A PŘÍJEMNÉ PROSTŘEDÍ`
+      }]
+    },
+    {
+      lines: [{
+        type: LineType.Regular,
+        text: `ŠPIČKOVÉ PŘÍSTROJE – MODERNÍ LÉČEBNÉ A DIAGNOSTICKÉ METODY`
+      }]
+    },
+    {
+      lines: [{
+        type: LineType.Regular,
+        text: `ŠETRNÉ A BEZBOLESTNÉ OŠETŘENÍ`
+      }]
+    },
+    {
+      lines: [{
+        type: LineType.Regular,
+        text: `OSOBNÍ A LIDSKÝ PŘÍSTUP`
+      }]
+    },
+    {
+      lines: [{
+        type: LineType.Regular,
+        text: `PÉČE I O TY NEJMENŠÍ`
+      }]
+    },
+    {
+      lines: [{
+        type: LineType.Regular,
+        text: `SMLUVNÍ ZAŘÍZENÍ ZDRAVOTNÍCH POJIŠŤOVEN`
+      }]
+    },
   ];
 
-  function getList() {
-    return [
-      `Intraorální rentgen (zhotovení detailních snímků jednotlivých zubů a diagnostických skusových snímků)`,
-      `Panoramatický rentgen (snímkování kompletního chrupu)`,
-      `Ultrazvuk (odstraňování zubního kamene)`,
-      `Endomotor (přístrojové ošetření zubních kanálků)`,
-      `Apexlokátor (přesné měření délky zubního kanálku)`,
-      `Polymerační lampa (vytvrzení “bílých” plomb)`,
-      `AirFlow ( odstraňování diskolorací zubů )`,
-      `Přístroje na sterilizaci a dezinfekci pracovních nástrojů a vybavení`
-    ];
-  }
+  let text2: IParagraph[] = [
+    {
+      lines: [
+        {
+          type: LineType.ListItem,
+          text: `<b>Intraorální rentgen</b> (zhotovení detailních snímků jednotlivých zubů a diagnostických skusových snímků)`
+        },
+        {
+          type: LineType.ListItem,
+          text: `<b>Panoramatický rentgen</b> (snímkování kompletního chrupu)`
+        },
+        {
+          type: LineType.ListItem,
+          text: `<b>Ultrazvuk</b> (odstraňování zubního kamene)`
+        },
+        {
+          type: LineType.ListItem,
+          text: `<b>Endomotor</b> (přístrojové ošetření zubních kanálků)`
+        },
+        {
+          type: LineType.ListItem,
+          text: `<b>Apexlokátor</b> (přesné měření délky zubního kanálku)`
+        },
+        {
+          type: LineType.ListItem,
+          text: `<b>Polymerační lampa</b> (vytvrzení “bílých” plomb)`
+        },
+        {
+          type: LineType.ListItem,
+          text: `<b>AirFlow</b> ( odstraňování diskolorací zubů )`
+        },
+        {
+          type: LineType.ListItem,
+          text: `<b>Přístroje na sterilizaci a dezinfekci</b> pracovních nástrojů a vybavení`
+        }
+
+      ]
+    }
+  ];
+
 
   return Rows.create({
     alignment: Rows.Align.Stretch,
@@ -64,8 +136,9 @@ function getText() {
         })
       },
       {
-        content: TextList.create({
-          items: getList()
+        content: TextArea.create({
+          header: "Pracovní vybavení a přístroje",
+          paragraphs: text2
         })
       }
     ]
