@@ -154,7 +154,7 @@ function getText() {
               { fontFamily: Fonts.OpenSansCondensedFontFamily },
               { fontWeight: Fonts.FontWeightLight },
             )
-          ], { display: 'flex', flexDirection: 'column',  flex: '1 1 100%', padding: 3, backgroundColor: Color.lightBrown })
+          ], { display: 'flex', flexDirection: 'column',  flex: '1 1 100%', padding: 3, marginBottom: 16, backgroundColor: Color.lightBrown })
       },
       {
         content: TextArea.create({
