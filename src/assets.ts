@@ -14,4 +14,5 @@ export const right_column_1_jpg = "../assets/right_column_1.jpg";
 export const right_column_2_jpg = "../assets/right_column_2.jpg";
 export const telefon_png = "../assets/telefon.png";
 export const telefon1_png = "../assets/telefon1.png";
+export const telephoneGreen_png = "../assets/telephoneGreen.png";
 export const zuby_png = "../assets/zuby.png";

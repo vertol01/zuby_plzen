@@ -59,7 +59,7 @@ export const contactPage = b.createVirtualComponent({
                                                     display: 'flex',
                                                     justifyContent: 'center',
                                                     alignItems: 'top',
-                                                    backgroundImage: `url(${b.asset(assets.telefon_png)})`,
+                                                    backgroundImage: `url(${b.asset(assets.telephoneGreen_png)})`,
                                                     backgroundSize: 'contain',
                                                     backgroundRepeat: 'no-repeat',
                                                     fontFamily: Fonts.OpenSansCondensedFontFamily,
