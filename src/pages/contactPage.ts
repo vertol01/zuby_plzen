@@ -240,10 +240,6 @@ function getText4(): IParagraph[] {
             lines: [
                 {
                     type: LineType.Regular,
-                    text: `Jsme smluvním zařízením zdravotních pojišťoven`
-                },
-                {
-                    type: LineType.ListItem,
                     text: `Jsme smluvním zařízením zdravotních pojišťoven:`
                 },
                 {

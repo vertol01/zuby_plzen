@@ -123,16 +123,16 @@ function getOpeningTimes(viewportWidth: number) {
         spacing: Columns.Spacing.Between,
         columns: [
             {
-                content: getTextField('PO|8-12', textSize, Constants.lineHeight, false),
+                content: getTextField('PO|8-14', textSize, Constants.lineHeight, false),
             },
             {
-                content: getTextField('ÚT|8-12', textSize, Constants.lineHeight, false),
+                content: getTextField('ÚT|8-16', textSize, Constants.lineHeight, false),
             },
             {
-                content: getTextField('ST|12-15', textSize, Constants.lineHeight, false),
+                content: getTextField('ST|8-14', textSize, Constants.lineHeight, false),
             },
             {
-                content: getTextField('ČT|8-12', textSize, Constants.lineHeight, false),
+                content: getTextField('ČT|8-14', textSize, Constants.lineHeight, false),
             },
             {
                 content: getTextField('PÁ|8-12', textSize, Constants.lineHeight, false),

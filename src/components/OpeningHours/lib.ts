@@ -16,7 +16,7 @@ export const create = b.createVirtualComponent({
                         content: LField.create(
                             {
                                 leftValue: getTextField('PO', Constants.leftColumnTextSize, Constants.lineHeight, true),
-                                rightValue: getTextField('8-12', Constants.leftColumnTextSize, Constants.lineHeight, false),
+                                rightValue: getTextField('8-14', Constants.leftColumnTextSize, Constants.lineHeight, false),
                                 width: Constants.lFieldWidth,
                                 align: LField.IAlignment.SpaceBetween
                             }
@@ -26,7 +26,7 @@ export const create = b.createVirtualComponent({
                         content: LField.create(
                             {
                                 leftValue: getTextField('ÚT', Constants.leftColumnTextSize, Constants.lineHeight, true),
-                                rightValue: getTextField('8-12', Constants.leftColumnTextSize, Constants.lineHeight, false),
+                                rightValue: getTextField('8-16', Constants.leftColumnTextSize, Constants.lineHeight, false),
                                 width: Constants.lFieldWidth,
                                 align: LField.IAlignment.SpaceBetween
                             }
@@ -36,7 +36,7 @@ export const create = b.createVirtualComponent({
                         content: LField.create(
                             {
                                 leftValue: getTextField('ST', Constants.leftColumnTextSize, Constants.lineHeight, true),
-                                rightValue: getTextField('8-15', Constants.leftColumnTextSize, Constants.lineHeight, false),
+                                rightValue: getTextField('8-14', Constants.leftColumnTextSize, Constants.lineHeight, false),
                                 width: Constants.lFieldWidth,
                                 align: LField.IAlignment.SpaceBetween
                             }
@@ -46,7 +46,7 @@ export const create = b.createVirtualComponent({
                         content: LField.create(
                             {
                                 leftValue: getTextField('ČT', Constants.leftColumnTextSize, Constants.lineHeight, true),
-                                rightValue: getTextField('12-16', Constants.leftColumnTextSize, Constants.lineHeight, false),
+                                rightValue: getTextField('8-14', Constants.leftColumnTextSize, Constants.lineHeight, false),
                                 width: Constants.lFieldWidth,
                                 align: LField.IAlignment.SpaceBetween
                             }

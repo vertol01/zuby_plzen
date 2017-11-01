@@ -15,7 +15,17 @@ export const servicesPage = b.createVirtualComponent({
             paragraphs: getText1()
           })
         },
-        { content: TextArea.create({ paragraphs: getText2() }) }
+        {
+          content: TextArea.create({
+            paragraphs: getText2()
+          })
+        },
+        {
+          content: TextArea.create({
+            header: "Pracovní vybavení a přístroje",
+            paragraphs: getText3()
+          })
+        }
       ]
     });
   }
@@ -38,7 +48,6 @@ function getText2(): IParagraph[] {
   return [
     {
       lines: [
-
         {
           type: LineType.Regular,
           text: `<b>Záchovná stomatologie</b> (konzervační stomatologie) – prevence, diagnostika a léčba zubních onemocnění v důsledku zubních kazů nebo úrazů`
@@ -90,6 +99,47 @@ function getText2(): IParagraph[] {
         {
           type: LineType.Regular,
           text: `<b>Zhotovujeme sportovní ochranné dlahy</b> (chrániče)`
+        }
+      ]
+    }
+  ];
+}
+
+function getText3() {
+  return [
+    {
+      lines: [
+        {
+          type: LineType.ListItem,
+          text: `<b>Intraorální rentgen</b> (zhotovení detailních snímků jednotlivých zubů a diagnostických skusových snímků)`
+        },
+        {
+          type: LineType.ListItem,
+          text: `<b>Panoramatický rentgen</b> (snímkování kompletního chrupu)`
+        },
+        {
+          type: LineType.ListItem,
+          text: `<b>Ultrazvuk</b> (odstraňování zubního kamene)`
+        },
+        {
+          type: LineType.ListItem,
+          text: `<b>Endomotor</b> (přístrojové ošetření zubních kanálků)`
+        },
+        {
+          type: LineType.ListItem,
+          text: `<b>Apexlokátor</b> (přesné měření délky zubního kanálku)`
+        },
+        {
+          type: LineType.ListItem,
+          text: `<b>Polymerační lampa</b> (vytvrzení “bílých” plomb)`
+        },
+        {
+          type: LineType.ListItem,
+          text: `<b>AirFlow</b> ( odstraňování diskolorací zubů )`
+        },
+        {
+          type: LineType.ListItem,
+          text: `<b>Přístroje na sterilizaci a dezinfekci</b> pracovních nástrojů a vybavení`
         }
       ]
     }

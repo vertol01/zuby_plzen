@@ -91,46 +91,7 @@ function getText() {
     // },
   ];
 
-  let text2: IParagraph[] = [
-    {
-      lines: [
-        {
-          type: LineType.ListItem,
-          text: `<b>Intraorální rentgen</b> (zhotovení detailních snímků jednotlivých zubů a diagnostických skusových snímků)`
-        },
-        {
-          type: LineType.ListItem,
-          text: `<b>Panoramatický rentgen</b> (snímkování kompletního chrupu)`
-        },
-        {
-          type: LineType.ListItem,
-          text: `<b>Ultrazvuk</b> (odstraňování zubního kamene)`
-        },
-        {
-          type: LineType.ListItem,
-          text: `<b>Endomotor</b> (přístrojové ošetření zubních kanálků)`
-        },
-        {
-          type: LineType.ListItem,
-          text: `<b>Apexlokátor</b> (přesné měření délky zubního kanálku)`
-        },
-        {
-          type: LineType.ListItem,
-          text: `<b>Polymerační lampa</b> (vytvrzení “bílých” plomb)`
-        },
-        {
-          type: LineType.ListItem,
-          text: `<b>AirFlow</b> ( odstraňování diskolorací zubů )`
-        },
-        {
-          type: LineType.ListItem,
-          text: `<b>Přístroje na sterilizaci a dezinfekci</b> pracovních nástrojů a vybavení`
-        }
-
-      ]
-    }
-  ];
-
+  
 
   return Rows.create({
     alignment: Rows.Align.Stretch,
@@ -162,12 +123,6 @@ function getText() {
           paragraphs: text
         })
       },
-      {
-        content: TextArea.create({
-          header: "Pracovní vybavení a přístroje",
-          paragraphs: text2
-        })
-      }
     ]
   });
 }
