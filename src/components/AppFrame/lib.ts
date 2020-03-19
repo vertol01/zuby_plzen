@@ -263,25 +263,25 @@ function getMobileAppControls() {
                     }
                 )
             },
-            {
-                content: b.styledDiv(
-                    Button.create(
-                        {
-                            height: Constants.buttonHeight,
-                            width: '100%',
-                            color: Color.lightBlue,
-                            textSize: Constants.buttonTextSize,
-                            value: 'Fotogalerie',
-                            onClick: () => {
-                                b.runTransition(b.createRedirectPush('gallery'));
-                                showMobileAppControls(false);
-                            }
-                        }),
-                    {
-                        marginTop: Constants.mobileControlsMargin, flex: '1 1 100%', display: 'flex'
-                    }
-                )
-            },
+            // {
+            //     content: b.styledDiv(
+            //         Button.create(
+            //             {
+            //                 height: Constants.buttonHeight,
+            //                 width: '100%',
+            //                 color: Color.lightBlue,
+            //                 textSize: Constants.buttonTextSize,
+            //                 value: 'Fotogalerie',
+            //                 onClick: () => {
+            //                     b.runTransition(b.createRedirectPush('gallery'));
+            //                     showMobileAppControls(false);
+            //                 }
+            //             }),
+            //         {
+            //             marginTop: Constants.mobileControlsMargin, flex: '1 1 100%', display: 'flex'
+            //         }
+            //     )
+            // },
             {
                 content: b.styledDiv(
                     Button.create(
@@ -347,19 +347,19 @@ function getControls(currentPage: string) {
                             }
                         })
                 },
-                {
-                    content: Button.create(
-                        {
-                            height: Constants.buttonHeight,
-                            color: currentPage === 'gallery' ? Color.white : Color.lightBlue,
-                            textSize: Constants.buttonTextSize,
-                            width: Constants.buttonWidth,
-                            value: 'Fotogalerie',
-                            onClick: () => {
-                                b.runTransition(b.createRedirectPush('gallery'));
-                            }
-                        })
-                },
+                // {
+                //     content: Button.create(
+                //         {
+                //             height: Constants.buttonHeight,
+                //             color: currentPage === 'gallery' ? Color.white : Color.lightBlue,
+                //             textSize: Constants.buttonTextSize,
+                //             width: Constants.buttonWidth,
+                //             value: 'Fotogalerie',
+                //             onClick: () => {
+                //                 b.runTransition(b.createRedirectPush('gallery'));
+                //             }
+                //         })
+                // },
                 {
                     content: Button.create(
                         {

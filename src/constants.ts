@@ -15,7 +15,7 @@ export const headerTextSize = 20;
 
 // control block
 export const buttonTextSize = 17.5;
-export const buttonWidth = 85;
+export const buttonWidth = 110;
 export const buttonHeight = 30;
 export const controlsMargin = 30;
 

@@ -1,15 +1,18 @@
-import * as b from "bobril";
-import * as Rows from "../Rows/lib";
-import * as styles from "./styles";
-import { IData, IParagraph, ILine, LineType } from "./data";
-export { IData, IParagraph, ILine, LineType } from "./data";
+import * as b from 'bobril';
+import * as Rows from '../Rows/lib';
+import * as styles from './styles';
+import { IData, IParagraph, ILine, LineType, TextAlign, IHeader } from './data';
+export { IData, IParagraph, ILine, LineType, TextAlign } from './data';
 
 export const create = b.createVirtualComponent<IData>({
   render(ctx: IContext, me: b.IBobrilNode) {
     let rows = [];
 
     ctx.data.header && rows.push({ content: getHeader(ctx.data.header) });
-    ctx.data.paragraphs && rows.push({ content: getBody(ctx.data.paragraphs, ctx.data.header !== undefined) });
+    ctx.data.paragraphs &&
+      rows.push({
+        content: getBody(ctx.data.paragraphs, ctx.data.header !== undefined)
+      });
     me.children = Rows.create({
       rows: rows,
       alignment: Rows.Align.Stretch
@@ -21,28 +24,40 @@ interface IContext extends b.IBobrilCtx {
   data: IData;
 }
 
-function getHeader(text: string) {
-  return b.style(
-    {
-      tag: "div",
-      children: text
-    },
-    styles.textHeader
-  );
+function getHeader(text: IHeader | string) {
+  if (typeof text === 'string') {
+    return b.style(
+      {
+        tag: 'div',
+        children: text
+      },
+      styles.textHeader
+    );
+  } else
+    return b.style(
+      {
+        tag: 'div',
+        children: text.text
+      },
+      styles.textHeader,
+      text.underline && { textDecoration: 'underline' }
+    );
 }
 
 function getBody(paragraphs: IParagraph[], containsHeader: boolean) {
   let first = true;
   return b.style(
     {
-      tag: "div",
+      tag: 'div',
       children: paragraphs.map(item => {
         let paragraph = b.style(
           {
-            tag: "p",
+            tag: 'p',
             children: getLines(item.lines)
           },
           first && { marginTop: 0 },
+          item.textAlign === TextAlign.Center && { textAlign: 'center' },
+          item.textAlign === TextAlign.Right && { textAlign: 'right' }
         );
         first = false;
         return paragraph;
@@ -58,15 +73,14 @@ function getLines(lines: ILine[]) {
   let listLines: string[] = [];
   for (let i = 0; i < lines.length; ++i) {
     let line = lines[i];
-    if (line.type == LineType.ListItem) {
+    if (line.type === LineType.ListItem) {
       listLines.push(line.text);
-    }
-    else {
+    } else {
       if (listLines.length !== 0) {
         result.push(writeList(listLines));
       }
       listLines = [];
-      result.push([styleText(line.text), { tag: 'br' }]);
+      result.push(...styleText(line.text));
     }
   }
   if (listLines.length !== 0) {
@@ -76,26 +90,26 @@ function getLines(lines: ILine[]) {
 }
 
 function writeList(list: string[]) {
-  return b.style({
-
-    tag: 'ul',
-    children: list.map((item) => {
-      return {
-        tag: 'li',
-        children: styleText(item)
-      };
-    })
-  },
+  return b.style(
+    {
+      tag: 'ul',
+      children: list.map(item => {
+        return {
+          tag: 'li',
+          children: styleText(item)
+        };
+      })
+    },
     { marginTop: 0, marginBottom: 0 }
   );
 }
 
 function styleText(text: string) {
-  let result: b.IBobrilChildArray = [];
+  let result: b.IBobrilNode[] = [];
 
   let currentIndex = 0;
   let start;
-  while (currentIndex != -1) {
+  while (currentIndex !== -1) {
     start = text.indexOf('<b>', currentIndex);
 
     addPlainString(text, result, currentIndex, start);
@@ -120,11 +134,13 @@ function styleText(text: string) {
   return result;
 }
 
-function addPlainString(text: string, result: b.IBobrilChildArray, start: number, end: number) {
-  if (start != end) {
+function addPlainString(
+  text: string,
+  result: b.IBobrilChildArray,
+  start: number,
+  end: number
+) {
+  if (start !== end) {
     result.push(text.substring(start, end !== -1 ? end : undefined));
   }
 }
-
-
-

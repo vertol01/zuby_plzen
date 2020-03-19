@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@types/googlemaps": "^3.29.0",
-    "bobril": "^7.4.0",
+    "bobril": "*",
     "bobflux": "*"
   }
 }
