@@ -90,14 +90,6 @@ function getText2(): IParagraph[] {
       lines: [
         {
           type: LineType.Regular,
-          text: `<b>Aplikace dentálních šperků</b> / kamínků – lepení speciálních dentálních ozdob pomocí speciálního, šetrného, zdravotně nezávadného lepidla`
-        }
-      ]
-    },
-    {
-      lines: [
-        {
-          type: LineType.Regular,
           text: `<b>Zhotovujeme sportovní ochranné dlahy</b> (chrániče)`
         }
       ]

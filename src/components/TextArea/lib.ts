@@ -81,6 +81,9 @@ function getLines(lines: ILine[]) {
       }
       listLines = [];
       result.push(...styleText(line.text));
+      result.push({
+      tag: 'br',
+      });
     }
   }
   if (listLines.length !== 0) {

@@ -15,138 +15,13 @@ export const homePage = b.createVirtualComponent({
 });
 
 function getText() {
-  // let text: IParagraph[] = [
-  //   {
-  //     lines: [
-  //       {
-  //         type: LineType.Regular,
-  //         text: `Nové moderní prostředí ordinace nabízí svým pacientům kvalitní a profesionální služby v oblasti zubního lékařství a zubní hygieny. Aplikujeme nejnovější léčebné metody a postupy, pracujeme se špičkovým vybavením a klademe důraz na šetrné a bezbolestné ošetření.`
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     lines: [
-  //       {
-  //         type: LineType.Regular,
-  //         text: `Naše práce stojí na třech základních pilířích – <b>pravidelná preventivní péče</b> – <b>profesionální ošetření</b> za pomoci moderní techniky a postupů – <b>přátelský a individuální přístup</b>, který ocení dospělí i ti nejmenší.`
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     lines: [
-  //       {
-  //         type: LineType.Regular,
-  //         text: `Přijďte se přesvědčit, že i péče o zuby může být příjemná!`
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     lines: [
-  //       {
-  //         type: LineType.Regular,
-  //         text: `<b>Těšíme se na Vaši návštěvu</b>`
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     lines: [
-  //       {
-  //         type: LineType.Regular,
-  //         text: `Tým ZuBy s.r.o.`
-  //       }
-  //     ]
-  //   }
-  //   // {
-  //   //   lines: [{
-  //   //     type: LineType.Regular,
-  //   //     text: `MODERNÍ A PŘÍJEMNÉ PROSTŘEDÍ`
-  //   //   }]
-  //   // },
-  //   // {
-  //   //   lines: [{
-  //   //     type: LineType.Regular,
-  //   //     text: `ŠPIČKOVÉ PŘÍSTROJE – MODERNÍ LÉČEBNÉ A DIAGNOSTICKÉ METODY`
-  //   //   }]
-  //   // },
-  //   // {
-  //   //   lines: [{
-  //   //     type: LineType.Regular,
-  //   //     text: `ŠETRNÉ A BEZBOLESTNÉ OŠETŘENÍ`
-  //   //   }]
-  //   // },
-  //   // {
-  //   //   lines: [{
-  //   //     type: LineType.Regular,
-  //   //     text: `OSOBNÍ A LIDSKÝ PŘÍSTUP`
-  //   //   }]
-  //   // },
-  //   // {
-  //   //   lines: [{
-  //   //     type: LineType.Regular,
-  //   //     text: `PÉČE I O TY NEJMENŠÍ`
-  //   //   }]
-  //   // },
-  //   // {
-  //   //   lines: [{
-  //   //     type: LineType.Regular,
-  //   //     text: `SMLUVNÍ ZAŘÍZENÍ ZDRAVOTNÍCH POJIŠŤOVEN`
-  //   //   }]
-  //   // },
-  // ];
-
-  // return Rows.create({
-  //   alignment: Rows.Align.Stretch,
-  //   rows: [
-  //     {
-  //       content: b.styledDiv(
-  //         [
-  //           b.style(
-  //             {
-  //               tag: 'span',
-  //               children:
-  //                 'Právě pro Vás připravujeme novou zubní ordinaci ZuBy s.r.o.'
-  //             },
-  //             { fontSize: 20 },
-  //             { fontFamily: Fonts.OpenSansCondensedFontFamily },
-  //             { fontWeight: Fonts.FontWeightBold }
-  //           ),
-  //           b.style(
-  //             {
-  //               tag: 'span',
-  //               children:
-  //                 'Budeme se těšit v nových prostorách v 6. patře Polikliniky Bory, v Plzni, Čechově ulici 44.'
-  //             },
-  //             { fontSize: 16 },
-  //             { fontFamily: Fonts.OpenSansCondensedFontFamily },
-  //             { fontWeight: Fonts.FontWeightLight }
-  //           )
-  //         ],
-  //         {
-  //           display: 'flex',
-  //           flexDirection: 'column',
-  //           flex: '1 1 100%',
-  //           padding: 3,
-  //           marginBottom: 16,
-  //           backgroundColor: Color.lightBrown
-  //         }
-  //       )
-  //     },
-  //     {
-  //       content: TextArea.create({
-  //         header: 'Nová zubní ordinace',
-  //         paragraphs: text
-  //       })
-  //     }
-  //   ]
-  // });
-
   return Rows.create({
     alignment: Rows.Align.Stretch,
     rows: [
       {
         content: TextArea.create({
           header: {
-            text: 'Z důvodu omezení rizika šíření onemocnění COVID-19 a nedostatku ochranných pomůcek, jsme od 16.3.2020 až do odvolání nuceni OMEZIT provoz zubní ordinace.',
+            text: 'Dovolená léto 2025',
             underline: true
           },
           paragraphs: [
@@ -154,7 +29,7 @@ function getText() {
               lines: [
                 {
                   text:
-                    'Od 16.3.2020 jsou zrušeny všechny odložitelné výkony.',
+                    '23.6. - 11.7. zástup  pouze v případě neodkladného zákroku v dopoledních hodinách po předchozí domluvě.',
                   type: LineType.Regular
                 }
               ]
@@ -163,7 +38,7 @@ function getText() {
               lines: [
                 {
                   text:
-                    'V případě <b>NEODKLADNÉHO</b> stavu bude ošetření provedeno v domluvený čas <b>POUZE</b> po předchozí telefonické domluvě na tel: <b>733 269 177</b>',
+                    'Dr. Pečenka (5.patro, tel: 373 723 555)',
                   type: LineType.Regular
                 }
               ]
@@ -172,7 +47,7 @@ function getText() {
               lines: [
                 {
                   text:
-                    'Omlouváme se za toto opatření, ale zdraví nás i našich pacientů je v těchto dnech jednoznačnou prioritou.',
+                    'Dr. Kocourová (5.patro, tel: 373 723 227)',
                   type: LineType.Regular
                 }
               ]
@@ -202,7 +77,7 @@ function getText() {
               lines: [
                 {
                   text:
-                    'MDDr.Jana Bystřická',
+                    'MDDr. Jana Bystřická',
                   type: LineType.Regular
                 }
               ]

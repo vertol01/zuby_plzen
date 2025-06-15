@@ -4,7 +4,6 @@ import { mainPage } from './pages/mainPage';
 import { aboutPage } from './pages/aboutPage';
 import { contactPage } from './pages/contactPage';
 import { homePage } from './pages/homePage';
-import { galleryPage } from './pages/galleryPage';
 import { servicesPage } from './pages/servicesPage';
 import * as state from './appState'; 
 
@@ -16,7 +15,6 @@ b.routes(
         b.route({ url: '/about', name: 'about', handler: aboutPage }),
         b.route({ url: '/contact', name: 'contact', handler: contactPage }),
         b.route({ url: '/services', name: 'services', handler: servicesPage }),
-        b.route({ url: '/gallery', name: 'gallery', handler: galleryPage }),
         b.routeDefault({ handler: homePage })
     ])
 );

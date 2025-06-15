@@ -126,10 +126,10 @@ function getOpeningTimes(viewportWidth: number) {
                 content: getTextField('PO|8-14', textSize, Constants.lineHeight, false),
             },
             {
-                content: getTextField('ÚT|8-16', textSize, Constants.lineHeight, false),
+                content: getTextField('ÚT|8-14', textSize, Constants.lineHeight, false),
             },
             {
-                content: getTextField('ST|8-14', textSize, Constants.lineHeight, false),
+                content: getTextField('ST|8-16', textSize, Constants.lineHeight, false),
             },
             {
                 content: getTextField('ČT|8-14', textSize, Constants.lineHeight, false),

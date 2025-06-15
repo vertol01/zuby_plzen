@@ -38,8 +38,6 @@ export const contactPage = b.createVirtualComponent({
                     },
                     {
                         content:
-
-
                         b.styledDiv(
                             Columns.create(
                                 {
@@ -119,36 +117,6 @@ export const contactPage = b.createVirtualComponent({
     }
 });
 
-
-// function getText2(): IParagraph[] {
-//     return [
-//         {
-//             lines: [
-//                 {
-//                     type: LineType.Regular,
-//                     text: `Poliklinika Bory, 6.patro`
-//                 },
-//                 {
-//                     type: LineType.Regular,
-//                     text: `Čechova 44, Plzeň`
-//                 },
-//                 {
-//                     type: LineType.Regular,
-//                     text: `Spojení|tramvaj 4`
-//                 },
-//                 {
-//                     type: LineType.Regular,
-//                     text: `autobus 29`
-//                 },
-//                 {
-//                     type: LineType.Regular,
-//                     text: `<> trolejbus 16`
-//                 }
-//             ]
-//         }
-//     ];
-// }
-
 function getText1(): IParagraph[] {
     return [
         {
@@ -156,17 +124,9 @@ function getText1(): IParagraph[] {
                 {
                     type: LineType.Regular,
                     text: `Pacienty ošetřujeme
-                     po předchozím telefonickém objednání. Objednávejte se prosím na tel.: 733 269 177 nebo 373 723 223. Děkujeme.`}
+                     po předchozím telefonickém objednání. Objednávejte se prosím na tel.: 733 269 177. Děkujeme.`}
             ]
         },
-        {
-            lines: [
-                {
-                    type: LineType.Regular,
-                    text: `Objednání mimo ordinační hodiny na přání pacienta účtujeme částkou 1.500 KČ (tato cena je jednorázovým poplatkem, který nezahrnuje standardní platby za ošetření)`
-                }
-            ]
-        }
     ];
 }
 
@@ -205,35 +165,6 @@ function getText(): IParagraph[] {
     ];
 }
 
-function getText3(): IParagraph[] {
-    return [
-        {
-            lines: [
-                {
-                    type: LineType.Regular,
-                    text: `Poliklinika Bory, 6. Patro`
-                },
-                {
-                    type: LineType.Regular,
-                    text: `Čechova 44, Plzeň`
-                },
-                {
-                    type: LineType.Regular,
-                    text: `Spojení | tramvaj 4`
-                },
-                {
-                    type: LineType.Regular,
-                    text: `autobus 29`
-                },
-                {
-                    type: LineType.Regular,
-                    text: `trolejbus 16`
-                }
-            ]
-        }
-    ];
-}
-
 function getText4(): IParagraph[] {
     return [
         {
@@ -266,11 +197,3 @@ function getText4(): IParagraph[] {
         }
     ];
 }
-// `ORDINAČNÍ HODINY`
-// ``
-// ``
-// `PO 8-14`
-// `ÚT 8-16`
-// `ST 8-14`
-// `ČT 8-14`
-// `PÁ 8-12`
