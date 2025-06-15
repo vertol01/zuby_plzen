@@ -2,3 +2,7 @@ ExpiresActive On
 ExpiresByType text/html M0
 ExpiresByType application/x-javascript M0
 ExpiresByType application/javascript M0
+
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
